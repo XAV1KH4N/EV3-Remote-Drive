@@ -15,10 +15,11 @@ def main():
     infra = InfraredSensor(Port.S4)
     left = Motor(Port.A)
     right = Motor(Port.D)
+    arm = Motor(Port.B)
     
-    car = Car(left, right, ev3)
+    car = Car(left, right, arm, ev3)
 
-    while car.execute(infra.keypad()):
+    while car.execute(infra.buttons(1)):#infra.keypad(), 
         pass
     
     ev3.speaker.beep()
