@@ -10,17 +10,31 @@ class Car:
         
     def execute(self,buttons):
         if Button.BEACON in buttons:
-            pass
-        if Button.LEFT_UP in buttons:
-            self.left.run(self.SPEED)
-            #self.arm.run_target(800,-1080)
+            self.left.brake()
+            self.right.brake()
+                               
+            if Button.LEFT_UP in buttons:
+                self.arm.run(self.SPEED)
+                
+            elif Button.LEFT_DOWN in buttons:
+                self.arm.run(-self.SPEED)
+                
+            else:
+                self.arm.brake()
             
         elif Button.LEFT_DOWN in buttons:
             self.left.run(-self.SPEED)
-            #self.arm.run_target(800,1080)
+            
+        if Button.LEFT_UP in buttons:
+            self.left.run(self.SPEED)
+            
+        elif Button.LEFT_DOWN in buttons:
+            self.left.run(-self.SPEED)
 
         elif Button.LEFT_UP not in buttons and Button.LEFT_DOWN not in buttons:
             self.left.brake()
+            self.arm.brake()
+            
 
         if Button.RIGHT_UP in buttons:
             self.right.run(self.SPEED)
