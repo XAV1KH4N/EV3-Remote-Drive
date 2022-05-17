@@ -14,10 +14,10 @@ class Car:
             self.right.brake()
                                
             if Button.RIGHT_UP in buttons:
-                self.arm.run(self.SPEED)
-                
-            elif Button.LEFT_RIGHT_UP in buttons:
                 self.arm.run(-self.SPEED)
+                
+            elif Button.RIGHT_DOWN in buttons:
+                self.arm.run(self.SPEED)
                 
             else:
                 self.arm.brake()
