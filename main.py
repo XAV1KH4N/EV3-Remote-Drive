@@ -19,7 +19,7 @@ def main():
     
     car = Car(left, right, arm, ev3)
 
-    while car.execute(infra.buttons(1)):#infra.keypad(), 
+    while car.execute(infra.keypad()): 
         pass
     
     ev3.speaker.beep()
