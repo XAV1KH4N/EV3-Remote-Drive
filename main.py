@@ -11,4 +11,8 @@ from Car import Car
 
 ev3 = EV3Brick()
 
+infra = InfraredSensor(Port.S4)
+left = Motor(Port.A)
+right = Motor(Port.D)
+
 ev3.speaker.beep()
