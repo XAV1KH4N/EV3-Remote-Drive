@@ -9,15 +9,18 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 
 from Car import Car
 
-def main()
+def main():
     ev3 = EV3Brick()
 
     infra = InfraredSensor(Port.S4)
     left = Motor(Port.A)
     right = Motor(Port.D)
     
-    car = Car(left, right)
+    car = Car(left, right, ev3)
 
+    while car.execute(infra.keypad()):
+        pass
+    
     ev3.speaker.beep()
 
 if __name__ == '__main__':

@@ -1,12 +1,13 @@
 from pybricks.parameters import Button
 
 class Car:
-    def __init__(self, left, right):
+    def __init__(self, left, right, ev3):
+        self.ev3 = ev3
         self.left = left
         self.right = right
         self.SPEED = 1560
         
-    def execute(buttons):
+    def execute(self,buttons):
                 
         if Button.LEFT_UP in buttons:
             self.left.run(self.SPEED)
@@ -17,7 +18,6 @@ class Car:
         elif Button.LEFT_UP not in buttons and Button.LEFT_DOWN not in buttons:
             self.left.brake()
 
-
         if Button.RIGHT_UP in buttons:
             self.right.run(self.SPEED)
         
@@ -27,7 +27,7 @@ class Car:
         elif Button.RIGHT_UP not in buttons and Button.RIGHT_DOWN not in buttons:
             self.right.brake()
             
-        return Button.CENTER not in ev3.buttons.pressed()
+        return Button.CENTER not in self.ev3.buttons.pressed()
     
 
 
