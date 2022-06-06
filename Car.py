@@ -11,7 +11,6 @@ class Car:
     def execute(self,buttons):
         if Button.LEFT_DOWN in buttons and Button.LEFT_UP in buttons:
             self.arm_motor(buttons)
-
                                 
         else:    
             self.left_motor(buttons)
@@ -35,9 +34,6 @@ class Car:
                 
         if Button.LEFT_UP in buttons:
             self.left.run(self.SPEED)
-                
-        elif Button.LEFT_DOWN in buttons:
-            self.left.run(-self.SPEED)
 
         elif Button.LEFT_UP not in buttons and Button.LEFT_DOWN not in buttons:
             self.left.brake()
@@ -57,4 +53,5 @@ class Car:
         else:
             self.arm.brake()
 
-        
+    #def screen(self, buttons):
+        #self.ev3.speaker.beep()
