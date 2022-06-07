@@ -1,4 +1,5 @@
 from pybricks.parameters import Button
+from pybricks.media.ev3dev import SoundFile, ImageFile
 
 class Car:
     def __init__(self, left, right, arm, ev3):
@@ -11,6 +12,9 @@ class Car:
     def execute(self,buttons):
         if Button.LEFT_DOWN in buttons and Button.LEFT_UP in buttons:
             self.arm_motor(buttons)
+            
+        elif Button.RIGHT_DOWN in buttons and Button.RIGHT_UP in buttons:
+            self.screen(buttons)
                                 
         else:    
             self.left_motor(buttons)
@@ -53,5 +57,9 @@ class Car:
         else:
             self.arm.brake()
 
-    #def screen(self, buttons):
-        #self.ev3.speaker.beep()
+    def screen(self, buttons):
+        if Button.LEFT_UP in buttons:
+            self.ev3.speaker.play_file(SoundFile.BOING)
+        
+        elif Button.LEFT_DOWN in buttons:
+            self.ev3.speaker.play_file(SoundFile.CONFIRM)
