@@ -17,10 +17,9 @@ def main():
     right = Motor(Port.D)
     arm = Motor(Port.B)
     
-    car = Car(left, right, arm, ev3)
-
-    while car.execute(infra.keypad()): 
-        pass
+    car = Car(left, right, arm, infra, ev3)
+    
+    car.autorun()
     
     ev3.speaker.beep()
 

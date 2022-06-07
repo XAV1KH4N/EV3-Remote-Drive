@@ -2,12 +2,33 @@ from pybricks.parameters import Button
 from pybricks.media.ev3dev import SoundFile, ImageFile
 
 class Car:
-    def __init__(self, left, right, arm, ev3):
+    def __init__(self, left, right, arm, infra, ev3):
         self.ev3 = ev3
         self.arm = arm
         self.left = left
         self.right = right
+        self.infra = infra
         self.SPEED = 1560
+        self.TURN_90 = 630
+        
+    def autorun(self):
+        while Button.CENTER not in self.ev3.buttons.pressed():
+            distance = self.infra.distance()
+            
+            buttons = self.infra.keypad()
+            
+            if Button.LEFT_UP in buttons:
+                self.rotate(-self.TURN_90)
+                
+            elif Button.RIGHT_UP in buttons:
+                self.rotate(self.TURN_90)
+                
+
+                
+                        
+    def rotate(self, angle):
+        self.left.run_angle(self.SPEED, angle, wait=False)
+        self.right.run_angle(self.SPEED, -angle)
         
     def execute(self,buttons):
         if Button.LEFT_DOWN in buttons and Button.LEFT_UP in buttons:
